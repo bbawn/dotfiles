@@ -1,0 +1,14 @@
+# Big scrollback
+defscrollback 10000
+
+# No annoying startup message
+startup_message off
+#
+# Display the status line at the bottom
+hardstatus on
+hardstatus alwayslastline
+hardstatus string "%{.kW}%-w%{.bW}%t [%n]%{-}%+w %=%{..G} %H %{..Y} %Y/%m/%d %c"
+
+# Turn on logging by default to /tmp dir by year, month, date
+logfile /tmp/screenlog-%Y%m%d-%c:%s
+deflog on
