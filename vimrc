@@ -43,8 +43,8 @@ filetype on				" enable special filetype things
 filetype indent on			" bbawn: needed for html indent?
 
 " Special configuration for special types of files ...
-autocmd FileType xml,html		setlocal si noexpandtab sw=2
-autocmd FileType js                     setlocal smartindent indent=on noexpandtab sw=2 tw=78
+autocmd FileType xml,html		setlocal si expandtab sw=2
+autocmd FileType javascript             setlocal expandtab sw=2 tw=78
 autocmd FileType Makefile,makefile	setlocal noexpandtab tw=78
 autocmd FileType c,cpp,java     	setlocal formatoptions=tcrq cindent comments=sr:/*,mb:*,ex:*/,:// tw=78 cino=:0
 autocmd FileType perl     		setlocal formatoptions=tcrq cindent cinkeys=0{,0},0),:,!^F,o,O,e tw=78
