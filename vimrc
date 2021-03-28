@@ -4,7 +4,7 @@ set autoindent
 set autowrite
 set ignorecase
 set incsearch
-set showmatch
+" set showmatch
 set expandtab
 set smarttab
 set softtabstop=4
@@ -44,6 +44,7 @@ filetype indent on			" bbawn: needed for html indent?
 
 " Special configuration for special types of files ...
 autocmd FileType xml,html		setlocal si expandtab sw=2
+autocmd FileType css		        setlocal si expandtab sw=2
 autocmd FileType javascript             setlocal expandtab sw=2 tw=78
 autocmd FileType Makefile,makefile	setlocal noexpandtab tw=78
 autocmd FileType c,cpp,java     	setlocal formatoptions=tcrq cindent comments=sr:/*,mb:*,ex:*/,:// tw=78 cino=:0
@@ -101,6 +102,8 @@ nnoremap <leader>1 :set nu<CR>
 nnoremap <leader>c :%s/\e\[[0-9;]*[mABFGHK]//g<CR>
 nnoremap <leader>m :%s/\r//g<CR>
 nnoremap <leader>N :e ~/Documents/notes<CR>
+nnoremap <leader>p :DoMatchParen<CR>
+nnoremap <leader>P :NoMatchParen<CR>
 
 " Define common tabularizations
 " XXX can't get these to work
