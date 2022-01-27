@@ -38,6 +38,10 @@ set diffopt=filler,context:15,iwhite
 set background=dark
 set guioptions-=T
 
+" Prettier for js/hmtl/json and such
+let g:prettier#autoformat_config = 1
+let g:prettier#autoformat_require_pragma = 0
+
 syntax on
 filetype on				" enable special filetype things
 filetype indent on			" bbawn: needed for html indent?
@@ -51,7 +55,7 @@ autocmd FileType c,cpp,java     	setlocal formatoptions=tcrq cindent comments=sr
 autocmd FileType perl     		setlocal formatoptions=tcrq cindent cinkeys=0{,0},0),:,!^F,o,O,e tw=78
 autocmd FileType python	setlocal expandtab
 autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType python nmap <leader>p :w\|!python %
+autocmd FileType python nmap <leader>P :w\|!python %
 
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 
 autocmd FileType go nmap <leader>a  :GoAlternate<CR>
@@ -102,8 +106,8 @@ nnoremap <leader>1 :set nu<CR>
 nnoremap <leader>c :%s/\e\[[0-9;]*[mABFGHK]//g<CR>
 nnoremap <leader>m :%s/\r//g<CR>
 nnoremap <leader>N :e ~/Documents/notes<CR>
-nnoremap <leader>p :DoMatchParen<CR>
-nnoremap <leader>P :NoMatchParen<CR>
+nnoremap <leader>( :DoMatchParen<CR>
+nnoremap <leader>) :NoMatchParen<CR>
 
 " Define common tabularizations
 " XXX can't get these to work
