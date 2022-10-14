@@ -42,6 +42,9 @@ set guioptions-=T
 let g:prettier#autoformat_config = 1
 let g:prettier#autoformat_require_pragma = 0
 
+" Note: prettier seems to suck. tidy works better?
+map <leader>t :%!tidy -i -q<CR>
+
 syntax on
 filetype on				" enable special filetype things
 filetype indent on			" bbawn: needed for html indent?
@@ -62,6 +65,7 @@ autocmd FileType go nmap <leader>a  :GoAlternate<CR>
 autocmd FileType go nmap <leader>A  :GoAutoTypeInfoToggle<CR>
 autocmd FileType go nmap <leader>b  <Plug>(go-build)
 autocmd FileType go nmap <leader>d  <Plug>(go-def)
+autocmd FileType go nmap <leader>D  <Plug>(go-doc)
 autocmd FileType go nmap <leader>r  :GoReferrers<CR>
 autocmd FileType go nmap <leader>R  <Plug>(go-run)
 autocmd FileType go nmap <leader>t  <Plug>(go-test)
@@ -74,11 +78,15 @@ autocmd FileType go nmap <Leader>n  <Plug>(go-rename)
 autocmd FileType go nmap <Leader>v  <Plug>(go-def-vertical)
 autocmd FileType go nmap <Leader>s  <Plug>(go-def-split)
 autocmd FileType go nmap <Leader>r  <Plug>(go-referrers)
+autocmd FileType go nmap <Leader>x  <Plug>(go-implements)
+
+autocmd FileType go setlocal omnifunc=v:lua.vim.lsp.omnifunc
 
 let g:go_list_type = "quickfix"
 " if guru definition tag is too slow...
 " let g:go_def_mode = 'godef'
 let g:go_def_mode = 'gopls'
+let g:go_info_mode = 'gopls'
 
 " call plug#begin()
 " Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
@@ -133,6 +141,9 @@ function! s:align()
     call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
   endif
 endfunction
+
+" Map omnifunc completion to easier key
+inoremap <F8> <C-X><C-O>
 
 " Load all plugins now.
 " Plugins need to be added to runtimepath before helptags can be generated.
