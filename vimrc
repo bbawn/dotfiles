@@ -42,6 +42,11 @@ set guioptions-=T
 let g:prettier#autoformat_config = 1
 let g:prettier#autoformat_require_pragma = 0
 
+let g:ale_fixers = {
+\    'javascript': ['prettier', 'eslint'],
+\}
+let g:ale_fix_on_save = 1
+
 " Note: prettier seems to suck. tidy works better?
 map <leader>t :%!tidy -i -q<CR>
 
