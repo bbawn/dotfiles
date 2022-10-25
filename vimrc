@@ -42,13 +42,18 @@ set guioptions-=T
 let g:prettier#autoformat_config = 1
 let g:prettier#autoformat_require_pragma = 0
 
+" Apparently ale doesn't work for 'html' : ['prettier']?
 let g:ale_fixers = {
 \    'javascript': ['prettier', 'eslint'],
+\    'html': ['tidy'],
 \}
 let g:ale_fix_on_save = 1
 let g:ale_linters = {
 \    'go': ['gofmt', 'staticcheck', 'gopls', 'govet'],
+\    'html': ['tidy'],
 \}
+
+let g:ale_html_tidy_options = '-q -e -language en -i'
 
 " Note: prettier seems to suck. tidy works better?
 map <leader>t :%!tidy -i -q<CR>
