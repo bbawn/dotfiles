@@ -82,7 +82,7 @@ alias af="ag --ignore '/test' --ignore '*_test.go' --ignore 'mock' --ignore mock
 alias agh="ag --hidden"
 
 
-alias dc="docker-compose"
+alias dc="docker compose"
 
 alias gb="git branch"
 alias gs="git status"
@@ -108,3 +108,8 @@ export BROWSER=google-chrome
 
 export GITHUB_ACCESS_TOKEN=df2d3c4185474b438e686e8fbd77fcdafbc1ce5f
 
+export PATH=$PATH:/$(brew --prefix)/opt/python/libexec/bin
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
