@@ -45,18 +45,24 @@ let g:prettier#autoformat_require_pragma = 0
 " Apparently ale doesn't work for 'html' : ['prettier']?
 let g:ale_fixers = {
 \    'javascript': ['prettier', 'eslint'],
-\    'html': ['tidy'],
 \}
 let g:ale_fix_on_save = 1
 let g:ale_linters = {
 \    'go': ['gofmt', 'staticcheck', 'gopls', 'govet'],
-\    'html': ['tidy'],
+\    'html': ['prettier'],
 \}
+" tidy does things like unconditionally wrapping bare <li>'s in <ul>'s, which
+" is incompatible with using hidden <div> to define template elements. Also,
+" ALE seems broken in not having prettier be an available fixed for html.
+" Current workaround is to not fix html in vim, just run prettier from
+" command-line.
+"    'html': ['tidy'],
 
 let g:ale_html_tidy_options = '-q -e -language en -i'
 
-" Note: prettier seems to suck. tidy works better?
-map <leader>t :%!tidy -i -q<CR>
+" Note: both prettier and tidy seem to have issues for html formatting...
+" autocmd FileType html nmap <Leader>F :%!tidy -i -q<CR>
+autocmd FileType html nmap <Leader>F :%!prettier -w --parser html<CR>
 
 syntax on
 filetype on				" enable special filetype things
